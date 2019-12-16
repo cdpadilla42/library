@@ -1,4 +1,4 @@
-var x = 2;
+var x = 3;
 
 var myLibrary = [];
 var display = document.querySelector(".library");
