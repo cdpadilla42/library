@@ -63,11 +63,21 @@ submitBttn.addEventListener("click", addBookToLibrary);
 
 function render() {
   for (var i = 0; i < myLibrary.length; i++) {
-    let text = myLibrary[i].info();
-    let currentNode = document.createElement('div');
-    currentNode.textContent = text;
-    currentNode.classList.add("book")
-    display.appendChild(currentNode);
+		let text = myLibrary[i].info();
+		let name = myLibrary[i].title;
+
+		let currentNode = document.createElement('div');
+		currentNode.classList.add("book")
+		currentNode.innerHTML = text;
+
+		let button = document.createElement("button");
+		button.classList.add("delete");
+		button.setAttribute("data-index", i);
+		button.innerText = "Delete";
+
+		currentNode.appendChild(button);
+		display.appendChild(currentNode);
+		
   }
 }
 
