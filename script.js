@@ -1,5 +1,6 @@
-// Add a button on each book’s display to remove the book from the library.
-// You will need to associate your DOM elements with the actual book objects in some way. One easy solution is giving them a data-attribute that corresponds to the index of the library array.
+// Add a button on each book’s display to change it’s read status.
+// To facilitate this you will want to create the function that toggles a book’s read status on your Book prototype.
+//
 
 
 // Debug input for reach checkbox - switch to radio buttons
@@ -14,7 +15,7 @@ function Book (title, author, pages, read) {
 	this.read = read;
 	this.info = function () {
 		let readString;
-		if (read) {
+		if (this.read === true) {
 			readString = "read";
 		} else {
 			readString = "not read yet";
@@ -68,6 +69,13 @@ function deleteBook(e) {
 	refreshDisplay();
 }
 
+function toggleRead(e) {
+	var index = e.target.attributes["data-index"].value
+	let current = myLibrary[index];
+	current.read = !current.read;
+	refreshDisplay();
+}
+
 var submitBttn = document.querySelector("#submit");
 submitBttn.addEventListener("click", addBookToLibrary);
 
@@ -80,13 +88,20 @@ function render() {
 		currentNode.classList.add("book")
 		currentNode.innerHTML = text;
 
-		let button = document.createElement("button");
-		button.classList.add("delete");
-		button.setAttribute("data-index", i);
-		button.innerText = "Delete";
-		button.addEventListener("click", deleteBook)
+		let buttonDel = document.createElement("button");
+		buttonDel.classList.add("delete");
+		buttonDel.setAttribute("data-index", i);
+		buttonDel.innerText = "Delete";
+		buttonDel.addEventListener("click", deleteBook)
 
-		currentNode.appendChild(button);
+		let buttonRead = document.createElement("button");
+		buttonRead.classList.add("buttonRead");
+		buttonRead.setAttribute("data-index", i);
+		buttonRead.innerText = "Toggle Read";
+		buttonRead.addEventListener("click", toggleRead)
+
+		currentNode.appendChild(buttonDel);
+		currentNode.appendChild(buttonRead);
 		display.appendChild(currentNode);
 		
   }
