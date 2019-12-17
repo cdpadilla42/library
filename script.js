@@ -54,8 +54,18 @@ function addBookToLibrary() {
 	pages.value = "";
 	// Clear button value???
 
+	refreshDisplay();
+}
+
+function refreshDisplay() {
 	display.innerHTML = "";
 	render();
+}
+
+function deleteBook(e) {
+	var index = e.target.attributes["data-index"].value
+	myLibrary.splice(index, 1);
+	refreshDisplay();
 }
 
 var submitBttn = document.querySelector("#submit");
@@ -74,6 +84,7 @@ function render() {
 		button.classList.add("delete");
 		button.setAttribute("data-index", i);
 		button.innerText = "Delete";
+		button.addEventListener("click", deleteBook)
 
 		currentNode.appendChild(button);
 		display.appendChild(currentNode);
