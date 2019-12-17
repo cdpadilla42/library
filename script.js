@@ -1,6 +1,4 @@
-// Add a button on each book’s display to change it’s read status.
-// To facilitate this you will want to create the function that toggles a book’s read status on your Book prototype.
-//
+// Optional -we haven’t learned any techniques for actually storing our data anywhere, so when the user refreshes the page all of their books will disappear! If you want, you are capable of adding some persistence to this library app using one of the following techniques:
 
 
 // Debug input for reach checkbox - switch to radio buttons
