@@ -1,8 +1,34 @@
-// Optional -we haven’t learned any techniques for actually storing our data anywhere, so when the user refreshes the page all of their books will disappear! If you want, you are capable of adding some persistence to this library app using one of the following techniques:
-
+// Make it pretty!!
 
 // Debug input for reach checkbox - switch to radio buttons
+
+// ACCESSING LOCAL STORAGE
 var myLibrary = [];
+
+if (!localStorage.length > 0) {
+	// sets default books in storage
+	var pooh = new Book ("Winnie the Pooh", "James", 50, true);
+	myLibrary.push(pooh);
+	var hp = new Book ("Harry Potter", "James", 100, true);
+	myLibrary.push(hp);
+	populateStorage();
+} else {
+	document.addEventListener("DOMContentLoaded", renderLibrary);
+}
+
+function populateStorage() {
+	localStorage.setItem("libraryArray", JSON.stringify(myLibrary));
+};
+
+function renderLibrary() {
+	myLibrary = JSON.parse(localStorage.getItem("libraryArray"))
+	render();
+}
+
+
+// SETTING OBJECT CONSTRUCTOS
+
+
 var display = document.querySelector(".library");
 
 
@@ -22,16 +48,15 @@ function Book (title, author, pages, read) {
 	}
 }
 
-var pooh = new Book ("Winnie the Pooh", "James", 50, true);
-myLibrary.push(pooh);
-var hp = new Book ("Harry Potter", "James", 100, true);
-myLibrary.push(hp);
-
-Book.prototype.print = function () {
-  console.log("Printing...");
+function bookInfo(obj) {
+	let readString;
+	if (obj.read === true) {
+		readString = "read";
+	} else {
+		readString = "not read yet";
+	}
+	return `${obj.title} by ${obj.author}, ${obj.pages} pages, ${readString}`;
 }
-
-pooh.info();
 
 
 function addBookToLibrary() {
@@ -46,6 +71,7 @@ function addBookToLibrary() {
 	}
 	let newBook = new Book(title.value, author.value, pages.value, read);
 	myLibrary.push(newBook);
+	populateStorage();
 	
 	// Clear input field
 	title.value = "";
@@ -64,14 +90,14 @@ function refreshDisplay() {
 function deleteBook(e) {
 	var index = e.target.attributes["data-index"].value
 	myLibrary.splice(index, 1);
-	refreshDisplay();
+	populateStorage();
 }
 
 function toggleRead(e) {
 	var index = e.target.attributes["data-index"].value
 	let current = myLibrary[index];
 	current.read = !current.read;
-	refreshDisplay();
+	populateStorage();
 }
 
 var submitBttn = document.querySelector("#submit");
@@ -79,7 +105,7 @@ submitBttn.addEventListener("click", addBookToLibrary);
 
 function render() {
   for (var i = 0; i < myLibrary.length; i++) {
-		let text = myLibrary[i].info();
+		let text = bookInfo(myLibrary[i]);
 		let name = myLibrary[i].title;
 
 		let currentNode = document.createElement('div');
