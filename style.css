@@ -3,5 +3,131 @@
 }
 
 .add-form{
-  /* display: none; */
+  
+}
+
+/* Containers and Body */
+
+body {
+  background-color: #d6537b;
+  color: #fffb9a;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.title{
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+h2 {
+  background: -webkit-linear-gradient(#f578d3, #60eff7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 18px;
+  display: inline;
+}
+h1 {
+  font-size: 18px;
+  display: inline;
+}
+
+.key-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template: repeat(5, 1fr) / repeat(4, 1fr);
+}
+
+.calculator-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr 4fr;
+  width: 247px;
+  height: 482px;
+  margin: 0 auto;
+  background-color: #212327;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.display {
+  box-sizing: border-box;
+  width: 95%;
+  height: 20px;
+  text-align: right;
+  border-bottom: 1px solid #303236;
+  display: block;
+  margin: auto 5px;
+  padding-bottom: 35px;
+  padding-right: 10px;
+  font-size: 30px;
+}
+
+/* Buttons */
+
+.p {
+  grid-row-start: 4;
+  grid-row-end: 6;
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+
+#Equal {
+  background-image: linear-gradient(#f578d3, #60eff7);
+  height: 115px;
+  border-radius: 40px;
+  opacity: 0.7;
+}
+#Equal:hover, #Equal.pressed {
+  opacity: 1;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+  background-color: #e39165;
+  border: 0 solid #d66e6e;
+  border-radius: 3%;
+  transition: all .2s ease;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 15px;
+}
+
+button:hover, .number.pressed {
+  background-color: #fffb9a;
+  color: #e39165;
+}
+
+
+.operator, #AC, #backspace, #close, #open {
+  background-color: #303236;
+  border: 3px solid #212327;
+
+}
+
+.operator:hover, #AC:hover, #backspace:hover, .operator.pressed, #AC.pressed, #backspace.pressed {
+  background-color: #6db8a8;
+}
+
+/* Keyboard Controls */
+
+.table td, .table th  {
+  padding: 8px;
+  
+}
+
+table {
+  margin: 0 auto;
+  background-color: #d66e6e;
+  width: 600px;
+}
+
+input, label {
+  margin: 0 auto;
+}
+
+.table.hide {
+  visibility: hidden;
 }
