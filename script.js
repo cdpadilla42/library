@@ -18,6 +18,7 @@ if (!localStorage.length > 0) {
 
 function populateStorage() {
 	localStorage.setItem("libraryArray", JSON.stringify(myLibrary));
+	render();
 };
 
 function renderLibrary() {
@@ -59,25 +60,28 @@ function bookInfo(obj) {
 }
 
 
+// Grabbing radio values
+let readValue;
+var radios = document.forms["add-form"].elements["read"];
+		for (var i=0; i < radios.length; i++) {
+			radios[i].onclick = function() {
+				readValue = (this.value == "true");
+			}
+		}
+
 function addBookToLibrary() {
 	let title = document.querySelector("#title");
 	let author = document.querySelector("#author");
 	let pages = document.querySelector("#pages");
-	let read = document.querySelector("#read").value;
-	if (read === "on") {
-		read = true;
-	} else {
-		read = false;
-	}
-	let newBook = new Book(title.value, author.value, pages.value, read);
+
+
+	let newBook = new Book(title.value, author.value, pages.value, readValue);
 	myLibrary.push(newBook);
 	populateStorage();
 	
-	// Clear input field
 	title.value = "";
 	author.value = "";
 	pages.value = "";
-	// Clear button value???
 
 	refreshDisplay();
 }
@@ -104,28 +108,60 @@ var submitBttn = document.querySelector("#submit");
 submitBttn.addEventListener("click", addBookToLibrary);
 
 function render() {
+
+	display.innerHTML = "<tr><th scope=\"col\">Title</th><th scope=\"col\">Author</th><th scope=\"col\">Pages</th><th scope=\"col\">Read</th><th scope=\"col\">Delete</th></tr>";
+
   for (var i = 0; i < myLibrary.length; i++) {
-		let text = bookInfo(myLibrary[i]);
-		let name = myLibrary[i].title;
+		let currentBook = myLibrary[i]
 
-		let currentNode = document.createElement('div');
-		currentNode.classList.add("book")
-		currentNode.innerHTML = text;
+		let currentNode = document.createElement("tr");
+		currentNode.classList.add("book");
 
-		let buttonDel = document.createElement("button");
-		buttonDel.classList.add("delete");
-		buttonDel.setAttribute("data-index", i);
-		buttonDel.innerText = "Delete";
-		buttonDel.addEventListener("click", deleteBook)
+		let titleNode = document.createElement("td");
+		titleNode.innerHTML = currentBook.title;
+		currentNode.appendChild(titleNode);
 
-		let buttonRead = document.createElement("button");
-		buttonRead.classList.add("buttonRead");
-		buttonRead.setAttribute("data-index", i);
-		buttonRead.innerText = "Toggle Read";
-		buttonRead.addEventListener("click", toggleRead)
+		let authorNode = document.createElement("td");
+		authorNode.innerHTML = currentBook.author;
+		currentNode.appendChild(authorNode);
 
-		currentNode.appendChild(buttonDel);
-		currentNode.appendChild(buttonRead);
+		let pagesNode = document.createElement("td");
+		pagesNode.innerHTML = currentBook.pages;
+		currentNode.appendChild(pagesNode);
+
+		let readNode = document.createElement("td");
+		let readBttn = document.createElement("button");
+		readBttn.setAttribute("data-index", i);
+		if (currentBook.read === true) {
+			readBttn.innerText = "Read"
+			readBttn.classList.add("bookRead");
+		} else {
+			readBttn.innerText = "Not read"
+			readBttn.classList.add("bookUnread");
+		}
+		readBttn.addEventListener("click", toggleRead);
+		readNode.appendChild(readBttn);
+		currentNode.appendChild(readNode);		
+
+		let deleteNode = document.createElement("td");
+		
+		
+		deleteNode.innerHTML = "<button class=\"delete\" id=\"" + i + "\"data-index=\"" + i + "\">Delete</button>"; 
+		deleteNode.addEventListener("click", deleteBook);
+
+
+		currentNode.appendChild(deleteNode);
+
+		
+
+		// let buttonRead = document.createElement("button");
+		// buttonRead.classList.add("buttonRead");
+		// buttonRead.setAttribute("data-index", i);
+		// buttonRead.innerText = "Toggle Read";
+		// buttonRead.addEventListener("click", toggleRead)
+
+		// currentNode.appendChild(buttonDel);
+		// currentNode.appendChild(buttonRead);
 		display.appendChild(currentNode);
 		
   }
