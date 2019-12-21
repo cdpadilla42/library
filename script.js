@@ -1,15 +1,11 @@
-// Make it pretty!!
-
-// Debug input for reach checkbox - switch to radio buttons
-
 // ACCESSING LOCAL STORAGE
 var myLibrary = [];
 
 if (!localStorage.length > 0) {
 	// sets default books in storage
-	var pooh = new Book ("Winnie the Pooh", "James", 50, true);
+	var pooh = new Book ("Winnie the Pooh", "A.A. Milne", 50, true);
 	myLibrary.push(pooh);
-	var hp = new Book ("Harry Potter", "James", 100, true);
+	var hp = new Book ("Harry Potter", "J.K. Rowling", 100, true);
 	myLibrary.push(hp);
 	populateStorage();
 } else {
@@ -144,24 +140,10 @@ function render() {
 		currentNode.appendChild(readNode);		
 
 		let deleteNode = document.createElement("td");
-		
-		
 		deleteNode.innerHTML = "<button class=\"delete\" id=\"" + i + "\"data-index=\"" + i + "\">Delete</button>"; 
 		deleteNode.addEventListener("click", deleteBook);
-
-
 		currentNode.appendChild(deleteNode);
 
-		
-
-		// let buttonRead = document.createElement("button");
-		// buttonRead.classList.add("buttonRead");
-		// buttonRead.setAttribute("data-index", i);
-		// buttonRead.innerText = "Toggle Read";
-		// buttonRead.addEventListener("click", toggleRead)
-
-		// currentNode.appendChild(buttonDel);
-		// currentNode.appendChild(buttonRead);
 		display.appendChild(currentNode);
 		
   }
