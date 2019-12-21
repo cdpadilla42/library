@@ -22,28 +22,42 @@
 
       </div>
 
-      <button id="add">Add a book!</button>
+      <!-- <button id="add">Add a book!</button> -->
+      <h3>Add a book!</h3>
 
       <div class="form">
         <form class="add-form" name="add-form">
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title">
-          <br>
-          <label for="author">Author</label>
-          <input type="text" name="author" id="author">
-          <br>
-          <label for="page">Pages</label>
-          <input type="text" name="pages" id="pages">
-          <br>
-          <label for="read">Read?</label>
-          <label for="yes">Yes</label>
-          <input type="radio" name="read" id="yes" value="true">
-          <label for="no">No</label>
-          <input type="radio" name="read" id="no" value="false">
-          <!-- <input type="submit" value="Add Book"> -->
-        
+
+          <table class="form-table">
+            <tr>
+              <td><label for="title">Title</label></td>
+              <td> <input type="text" name="title" id="title"></td>
+            </tr>
+            <tr>
+              <td><label for="author">Author</label></td>
+              <td> <input type="text" name="author" id="author"></td>
+            </tr>
+            <tr>
+              <td> <label for="page">Pages</label></td>
+              <td> <input type="text" name="pages" id="pages"></td>
+            </tr>
+            <tr>
+              <td><label for="read">Read?</label></td>
+              <td> 
+                <label for="yes">Yes</label>
+                <input type="radio" name="read" id="yes" value="true">
+                <label for="no">No</label>
+                <input type="radio" name="read" id="no" value="false">
+                
+              </td>
+            </tr>
+
+          </table>
         </form>
-          <button id="submit">Submit</button>
+        <br>
+
+        <button id="submit">Submit</button>
+
       </div>
     <script src="script.js"></script>
     </body>
