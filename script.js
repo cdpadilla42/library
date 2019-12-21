@@ -1,4 +1,5 @@
 // ACCESSING LOCAL STORAGE
+var display = document.querySelector(".library");
 var myLibrary = [];
 
 if (!localStorage.length > 0) {
@@ -26,7 +27,7 @@ function renderLibrary() {
 // SETTING OBJECT CONSTRUCTOS
 
 
-var display = document.querySelector(".library");
+
 
 
 function Book (title, author, pages, read) {
