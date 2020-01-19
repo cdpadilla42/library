@@ -1,63 +1,61 @@
-<!DOCTYPE html> 
-  <html>
-    <head>
-      <title>Library</title>
-      <link rel="stylesheet" type="text/css" href="style.css" />
-      <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
-    </head>
-    <body>
-      <h1>Library</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Library</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Library</h1>
 
-      <div>
-        <table class="library">
+    <div>
+      <table class="library">
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Pages</th>
+          <th scope="col">Read</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </table>
+    </div>
+
+    <h3>Add a book!</h3>
+
+    <div class="form">
+      <form class="add-form" name="add-form">
+        <table class="form-table">
           <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Author</th>
-            <th scope="col">Pages</th>
-            <th scope="col">Read</th>
-            <th scope="col">Delete</th>
+            <td><label for="title">Title</label></td>
+            <td><input type="text" name="title" id="title" required /></td>
           </tr>
-         
+          <tr>
+            <td><label for="author">Author</label></td>
+            <td><input type="text" name="author" id="author" required /></td>
+          </tr>
+          <tr>
+            <td><label for="page">Pages</label></td>
+            <td><input type="text" name="pages" id="pages" required /></td>
+          </tr>
+          <tr>
+            <td><label for="read">Read?</label></td>
+            <td>
+              <label for="yes">Yes</label>
+              <input type="radio" name="read" id="yes" value="true" required />
+              <label for="no">No</label>
+              <input type="radio" name="read" id="no" value="false" required />
+            </td>
+          </tr>
         </table>
+      </form>
+      <br />
 
-      </div>
-      
-      <h3>Add a book!</h3>
-
-      <div class="form">
-        <form class="add-form" name="add-form">
-
-          <table class="form-table">
-            <tr>
-              <td><label for="title">Title</label></td>
-              <td> <input type="text" name="title" id="title"></td>
-            </tr>
-            <tr>
-              <td><label for="author">Author</label></td>
-              <td> <input type="text" name="author" id="author"></td>
-            </tr>
-            <tr>
-              <td> <label for="page">Pages</label></td>
-              <td> <input type="text" name="pages" id="pages"></td>
-            </tr>
-            <tr>
-              <td><label for="read">Read?</label></td>
-              <td> 
-                <label for="yes">Yes</label>
-                <input type="radio" name="read" id="yes" value="true">
-                <label for="no">No</label>
-                <input type="radio" name="read" id="no" value="false">
-                
-              </td>
-            </tr>
-
-          </table>
-        </form>
-        <br>
-
-        <button id="submit">Submit</button>
-
-      </div>
+      <button id="submit">Submit</button>
+      <div class="error hide"></div>
+    </div>
     <script src="script.js"></script>
-    </body>
-  </html>
+  </body>
+</html>

@@ -2,14 +2,13 @@
   border: 1px solid black;
 }
 
-
 body {
   background-color: #d6537b;
   color: #fffb9a;
   font-family: 'Josefin Sans', sans-serif;
 }
 
-.title{
+.title {
   padding-top: 10px;
   padding-left: 10px;
 }
@@ -21,11 +20,11 @@ h2 {
   font-size: 18px;
   display: inline;
 }
-h1, h3 {
+h1,
+h3 {
   font-size: 18px;
   text-align: center;
 }
-
 
 .display {
   box-sizing: border-box;
@@ -40,7 +39,6 @@ h1, h3 {
   font-size: 30px;
 }
 
-
 button {
   width: 100px;
   height: 30px;
@@ -50,7 +48,7 @@ button {
   background-color: #e39165;
   border: 0 solid #d66e6e;
   border-radius: 3%;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 15px;
 }
@@ -60,10 +58,9 @@ button:hover {
   color: #e39165;
 }
 
-
-.table td, .table th  {
+.table td,
+.table th {
   padding: 15px;
-  
 }
 
 table {
@@ -77,4 +74,11 @@ table.form-table {
 
 .table.hide {
   visibility: hidden;
+}
+
+.error.hide {
+  display: none;
+}
+.error {
+  text-align: center;
 }
